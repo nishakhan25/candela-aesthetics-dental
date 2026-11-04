@@ -1,13 +1,15 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
 const presets = {
-  up: { hidden: { opacity: 0, y: 36 }, show: { opacity: 1, y: 0 } },
-  down: { hidden: { opacity: 0, y: -28 }, show: { opacity: 1, y: 0 } },
-  left: { hidden: { opacity: 0, x: -40 }, show: { opacity: 1, x: 0 } },
-  right: { hidden: { opacity: 0, x: 40 }, show: { opacity: 1, x: 0 } },
-  scale: { hidden: { opacity: 0, scale: 0.92 }, show: { opacity: 1, scale: 1 } },
+  up: { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0 } },
+  down: { hidden: { opacity: 0, y: -20 }, show: { opacity: 1, y: 0 } },
+  left: { hidden: { opacity: 0, x: -28 }, show: { opacity: 1, x: 0 } },
+  right: { hidden: { opacity: 0, x: 28 }, show: { opacity: 1, x: 0 } },
+  scale: { hidden: { opacity: 0, scale: 0.96 }, show: { opacity: 1, scale: 1 } },
   fade: { hidden: { opacity: 0 }, show: { opacity: 1 } },
 }
+
+const viewport = { once: true, amount: 0.05, margin: '0px 0px -40px 0px' }
 
 export default function Reveal({
   children,
@@ -16,7 +18,7 @@ export default function Reveal({
   y = 28,
   as = 'div',
   from = 'up',
-  duration = 0.8,
+  duration = 0.7,
   once = true,
 }) {
   const reduce = useReducedMotion()
@@ -36,7 +38,8 @@ export default function Reveal({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once, amount: 0.2 }}
+      animate="show"
+      viewport={{ ...viewport, once }}
       variants={{
         hidden,
         show: {
@@ -74,7 +77,8 @@ export function Stagger({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
+      animate="show"
+      viewport={viewport}
       variants={{
         hidden: {},
         show: {
@@ -94,7 +98,7 @@ export function Stagger({
                 hidden: preset.hidden,
                 show: {
                   ...preset.show,
-                  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+                  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
                 },
               }}
             >
@@ -129,12 +133,11 @@ export function AnimatedTitle({
         <motion.span
           key={`${word}-${i}`}
           className="inline-block pr-[0.28em]"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 0.55,
-            delay: delay + i * 0.06,
+            duration: 0.5,
+            delay: delay + i * 0.05,
             ease: [0.22, 1, 0.36, 1],
           }}
         >
