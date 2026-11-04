@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* Instagram-aligned Candela / CMC palette:
+   Navy from CMC logo (~#181A40), cool clinic whites, champagne gold accents */
+@theme {
+  --color-ivory: #F5F7FB;
+  --color-beige: #E7ECF6;
+  --color-gold: #C5A46D;
+  --color-espresso: #181A40;
+  --color-warm-grey: #6B728C;
+  --color-white: #FFFFFF;
+  --color-navy: #181A40;
+  --color-navy-deep: #0F1230;
+  --color-clinic-blue: #2F3F8A;
+
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 20px 60px rgba(24, 26, 64, 0.10);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivory text-espresso font-sans antialiased;
+    font-feature-settings: "ss01" on, "kern" on;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-gold) 35%, white);
+    color: var(--color-espresso);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .editorial-rule {
+    height: 1px;
+    width: 3.5rem;
+    background: var(--color-gold);
+  }
+
+  .gold-underline {
+    background-image: linear-gradient(var(--color-gold), var(--color-gold));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    transition: background-size 0.4s ease;
+  }
+
+  .gold-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  .hover-lift {
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.45s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 50px rgba(24, 26, 64, 0.12);
+  }
+}
+
+.field-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-warm-grey);
+}
+
+.field-input {
+  margin-top: 0.5rem;
+  width: 100%;
+  border: 1px solid rgba(24, 26, 64, 0.15);
+  background: #fff;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-espresso);
+  outline: none;
+}
+
+.field-input:focus {
+  border-color: var(--color-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

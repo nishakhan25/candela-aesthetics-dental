@@ -1,0 +1,36 @@
+# Dependencies & builds
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+backend/.venv/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+backend/.env
+frontend/.env
+frontend/.env.local
+*.local
+
+# Caches & logs
+.pytest_cache/
+.mypy_cache/
+logs/
+*.log
+npm-debug.log*
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.suo
+*.sw?
+
+# Debug
+backend/scripts/_debug_*.py
