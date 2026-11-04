@@ -207,56 +207,43 @@ export default function PageHero({
     )
   }
 
-  // Default: split
+  // Default: split — no opacity-0 so content always visible on first paint
   return (
     <section className="overflow-hidden bg-ivory pt-28 md:pt-32">
       <div className="mx-auto grid max-w-7xl items-stretch gap-0 px-5 md:px-8 lg:grid-cols-12">
         <div className="flex flex-col justify-center py-10 lg:col-span-5 lg:py-16 lg:pr-10">
           {eyebrow ? (
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="font-sans text-[11px] font-semibold tracking-[0.28em] uppercase text-gold"
-            >
+            <p className="font-sans text-[11px] font-semibold tracking-[0.28em] uppercase text-gold">
               {eyebrow}
-            </motion.p>
+            </p>
           ) : null}
           <div className="editorial-rule mt-3" />
-          <motion.h1
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.08 }}
-            className="mt-5 font-display text-4xl leading-tight text-espresso md:text-5xl lg:text-6xl"
-          >
+          <h1 className="mt-5 font-display text-4xl leading-tight text-espresso md:text-5xl lg:text-6xl">
             {title}
-          </motion.h1>
+          </h1>
           {description ? (
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.16 }}
-              className="mt-5 max-w-md font-sans text-sm leading-relaxed text-warm-grey md:text-base"
-            >
+            <p className="mt-5 max-w-md font-sans text-sm leading-relaxed text-warm-grey md:text-base">
               {description}
-            </motion.p>
+            </p>
           ) : null}
           {cta}
         </div>
-        <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.05, duration: 0.35 }}
+        <div
           className={`relative lg:col-span-7 ${compact ? 'min-h-[36vh]' : 'min-h-[48vh]'} overflow-hidden`}
         >
           {image ? (
-            <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover" loading="eager" />
+            <img
+              src={image}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="eager"
+              fetchPriority="high"
+            />
           ) : (
             <div className="absolute inset-0 bg-beige" />
           )}
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-ivory/30 lg:to-transparent" />
-          <div className="absolute -left-3 top-8 hidden h-24 w-16 border border-gold/50 lg:block" />
-          <div className="absolute -right-3 bottom-8 hidden h-28 w-20 border border-gold/40 lg:block" />
-        </motion.div>
+        </div>
       </div>
     </section>
   )
