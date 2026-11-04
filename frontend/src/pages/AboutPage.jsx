@@ -48,7 +48,7 @@ export default function AboutPage() {
             className="mt-5 font-display text-4xl leading-tight text-espresso md:text-6xl"
             delay={0.12}
           />
-          <Reveal from="up" delay={0.35}>
+          <Reveal from="up" delay={0.05}>
             <p className="mx-auto mt-5 max-w-2xl font-sans text-base leading-relaxed text-warm-grey md:text-lg">
               A modern clinic experience designed around personalized care, clinical
               clarity, and lasting patient trust — where aesthetic wellness and dental

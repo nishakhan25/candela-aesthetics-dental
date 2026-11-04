@@ -52,8 +52,8 @@ export default function TreatmentSolutions() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{
-                  duration: 0.45,
-                  delay: reduce ? 0 : index * 0.05,
+                  duration: 0.25,
+                  delay: reduce ? 0 : Math.min(index * 0.03, 0.15),
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className={`relative flex h-[132px] w-full flex-col items-start border p-4 text-left transition-colors duration-300 md:h-[140px] md:p-5 ${

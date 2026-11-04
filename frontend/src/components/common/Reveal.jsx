@@ -1,31 +1,31 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
 const presets = {
-  up: { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0 } },
-  down: { hidden: { opacity: 0, y: -20 }, show: { opacity: 1, y: 0 } },
-  left: { hidden: { opacity: 0, x: -28 }, show: { opacity: 1, x: 0 } },
-  right: { hidden: { opacity: 0, x: 28 }, show: { opacity: 1, x: 0 } },
-  scale: { hidden: { opacity: 0, scale: 0.96 }, show: { opacity: 1, scale: 1 } },
+  up: { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } },
+  down: { hidden: { opacity: 0, y: -12 }, show: { opacity: 1, y: 0 } },
+  left: { hidden: { opacity: 0, x: -16 }, show: { opacity: 1, x: 0 } },
+  right: { hidden: { opacity: 0, x: 16 }, show: { opacity: 1, x: 0 } },
+  scale: { hidden: { opacity: 0, scale: 0.98 }, show: { opacity: 1, scale: 1 } },
   fade: { hidden: { opacity: 0 }, show: { opacity: 1 } },
 }
 
-const viewport = { once: true, amount: 0.05, margin: '0px 0px -40px 0px' }
+const viewport = { once: true, amount: 0.01, margin: '80px 0px' }
 
 export default function Reveal({
   children,
   className = '',
   delay = 0,
-  y = 28,
+  y = 16,
   as = 'div',
   from = 'up',
-  duration = 0.7,
+  duration = 0.35,
   once = true,
 }) {
   const reduce = useReducedMotion()
   const Component = motion[as] || motion.div
   const preset = presets[from] || presets.up
   const hidden =
-    from === 'up' && y !== 28
+    from === 'up' && y !== 16
       ? { opacity: 0, y }
       : preset.hidden
 
@@ -37,8 +37,8 @@ export default function Reveal({
     <Component
       className={className}
       initial="hidden"
-      whileInView="show"
       animate="show"
+      whileInView="show"
       viewport={{ ...viewport, once }}
       variants={{
         hidden,
@@ -46,7 +46,7 @@ export default function Reveal({
           ...preset.show,
           transition: {
             duration,
-            delay,
+            delay: Math.min(delay, 0.12),
             ease: [0.22, 1, 0.36, 1],
           },
         },
@@ -57,12 +57,11 @@ export default function Reveal({
   )
 }
 
-/** Stagger children like Cosmolux Elementor delay cascade */
 export function Stagger({
   children,
   className = '',
   delay = 0,
-  stagger = 0.1,
+  stagger = 0.04,
   from = 'up',
 }) {
   const reduce = useReducedMotion()
@@ -76,15 +75,15 @@ export function Stagger({
     <motion.div
       className={className}
       initial="hidden"
-      whileInView="show"
       animate="show"
+      whileInView="show"
       viewport={viewport}
       variants={{
         hidden: {},
         show: {
           transition: {
             staggerChildren: stagger,
-            delayChildren: delay,
+            delayChildren: Math.min(delay, 0.08),
           },
         },
       }}
@@ -98,7 +97,7 @@ export function Stagger({
                 hidden: preset.hidden,
                 show: {
                   ...preset.show,
-                  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+                  transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
                 },
               }}
             >
@@ -110,7 +109,7 @@ export function Stagger({
   )
 }
 
-/** Word-by-word title reveal */
+/** Instant title — no slow word-by-word wait */
 export function AnimatedTitle({
   text,
   className = '',
@@ -119,7 +118,6 @@ export function AnimatedTitle({
 }) {
   const reduce = useReducedMotion()
   const Tag = motion[as] || motion.h1
-  const words = String(text).split(' ')
 
   if (reduce) {
     const Static = as === 'h1' ? 'h1' : as === 'h2' ? 'h2' : 'h3'
@@ -128,22 +126,13 @@ export function AnimatedTitle({
   }
 
   return (
-    <Tag className={className} aria-label={text}>
-      {words.map((word, i) => (
-        <motion.span
-          key={`${word}-${i}`}
-          className="inline-block pr-[0.28em]"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.5,
-            delay: delay + i * 0.05,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          {word}
-        </motion.span>
-      ))}
+    <Tag
+      className={className}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: Math.min(delay, 0.08), ease: [0.22, 1, 0.36, 1] }}
+    >
+      {text}
     </Tag>
   )
 }

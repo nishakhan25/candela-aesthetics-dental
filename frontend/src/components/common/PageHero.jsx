@@ -33,7 +33,7 @@ export default function PageHero({
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.08 }}
+            transition={{ duration: 0.3, delay: 0.04 }}
             className="mt-4 font-display text-4xl text-espresso md:text-5xl"
           >
             {title}
@@ -42,7 +42,7 @@ export default function PageHero({
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.16 }}
+              transition={{ duration: 0.3, delay: 0.06 }}
               className="mt-4 font-sans text-sm text-warm-grey md:text-base"
             >
               {description}
@@ -99,7 +99,7 @@ export default function PageHero({
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.7 }}
+              transition={{ delay: 0.08, duration: 0.35 }}
               className="relative mx-auto mt-10 max-w-5xl overflow-hidden shadow-[0_28px_70px_rgba(24,26,64,0.14)]"
             >
               <img
@@ -245,7 +245,7 @@ export default function PageHero({
         <motion.div
           initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.12, duration: 0.7 }}
+          transition={{ delay: 0.05, duration: 0.35 }}
           className={`relative lg:col-span-7 ${compact ? 'min-h-[36vh]' : 'min-h-[48vh]'} overflow-hidden`}
         >
           {image ? (

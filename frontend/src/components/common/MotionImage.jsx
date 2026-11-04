@@ -30,7 +30,7 @@ export default function MotionImage({
       initial={reveal && !reduce ? { opacity: 0, scale: 1.04 } : false}
       whileInView={reveal && !reduce ? { opacity: 1, scale: 1 } : undefined}
       viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
     >
       <motion.img
         src={src}

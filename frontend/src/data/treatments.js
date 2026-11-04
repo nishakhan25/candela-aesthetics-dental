@@ -4,7 +4,7 @@
  */
 
 const img = (id) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=2400&q=90`
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=75`
 
 export const categories = [
   {

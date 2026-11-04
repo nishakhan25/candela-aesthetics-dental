@@ -3,8 +3,8 @@
  * Instagram assets are reserved for Gallery + Instagram showcase only.
  */
 
-const u = (id, w = 3840) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=90`
+const u = (id, w = 1600) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=75`
 
 export const unsplash = {
   hero: u('photo-1629909613654-28e377c37b09'), // luxury dental suite

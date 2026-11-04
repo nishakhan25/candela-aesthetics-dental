@@ -49,7 +49,7 @@ export default function HomeSlideshow() {
                 initial={reduce ? false : { opacity: 0, scale: 1.06 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 loading="lazy"
               />
             </AnimatePresence>

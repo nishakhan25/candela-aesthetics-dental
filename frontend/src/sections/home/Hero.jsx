@@ -46,10 +46,10 @@ export default function Hero() {
             src={homeSlides[index].src}
             alt={homeSlides[index].alt}
             className="absolute inset-0 h-full w-full object-cover"
-            initial={reduce ? false : { opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             loading={index === 0 ? 'eager' : 'lazy'}
             fetchPriority={index === 0 ? 'high' : 'auto'}
             decoding="async"
@@ -63,34 +63,34 @@ export default function Hero() {
         <motion.p
           initial={reduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
+          transition={{ duration: 0.35, delay: 0.05 }}
           className="font-sans text-[11px] font-semibold tracking-[0.3em] uppercase text-gold"
         >
           Lahore · Aesthetic & Dental Care
         </motion.p>
 
         <motion.h1
-          initial={reduce ? false : { opacity: 0, y: 28 }}
+          initial={reduce ? false : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.08 }}
           className="mt-5 max-w-4xl font-display text-5xl leading-[1.02] font-medium text-white text-balance md:text-7xl"
         >
           {clinicConfig.tagline}
         </motion.h1>
 
         <motion.p
-          initial={reduce ? false : { opacity: 0, y: 24 }}
+          initial={reduce ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, delay: 0.55 }}
+          transition={{ duration: 0.35, delay: 0.12 }}
           className="mt-5 max-w-lg font-sans text-base leading-relaxed text-white/75"
         >
           {clinicConfig.supportingLine}
         </motion.p>
 
         <motion.div
-          initial={reduce ? false : { opacity: 0, y: 20 }}
+          initial={reduce ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, delay: 0.7 }}
+          transition={{ duration: 0.35, delay: 0.16 }}
           className="mt-8 flex flex-col gap-3 sm:flex-row"
         >
           <Button to="/book" variant="gold">
