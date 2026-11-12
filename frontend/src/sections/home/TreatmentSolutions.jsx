@@ -49,8 +49,7 @@ export default function TreatmentSolutions() {
                 onClick={() => setActiveId(item.id)}
                 aria-pressed={selected}
                 initial={reduce ? false : { opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: 0.25,
                   delay: reduce ? 0 : Math.min(index * 0.03, 0.15),

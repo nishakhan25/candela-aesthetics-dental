@@ -9,8 +9,6 @@ const presets = {
   fade: { hidden: { opacity: 0 }, show: { opacity: 1 } },
 }
 
-const viewport = { once: true, amount: 0.01, margin: '80px 0px' }
-
 export default function Reveal({
   children,
   className = '',
@@ -19,7 +17,6 @@ export default function Reveal({
   as = 'div',
   from = 'up',
   duration = 0.35,
-  once = true,
 }) {
   const reduce = useReducedMotion()
   const Component = motion[as] || motion.div
@@ -38,8 +35,6 @@ export default function Reveal({
       className={className}
       initial="hidden"
       animate="show"
-      whileInView="show"
-      viewport={{ ...viewport, once }}
       variants={{
         hidden,
         show: {
@@ -76,8 +71,6 @@ export function Stagger({
       className={className}
       initial="hidden"
       animate="show"
-      whileInView="show"
-      viewport={viewport}
       variants={{
         hidden: {},
         show: {
